@@ -1,3 +1,4 @@
+import 'package:fluency_app/core/presentation/widgets/animated_progress_indicator.dart';
 import 'package:fluency_app/core/theme/app_theme.dart';
 import 'package:fluency_app/features/lesson/presentation/controller/lesson_controller.dart';
 import 'package:fluency_app/features/lesson/presentation/controller/lesson_event.dart';
@@ -240,38 +241,11 @@ class _LessonTasksPageState extends State<LessonTasksPage> {
                         ],
                       ),
                     ),
-                    SizedBox(
-                      width: 60,
-                      height: 60,
-                      child: Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          SizedBox(
-                            width: 40,
-                            height: 40,
-                            child: CircularProgressIndicator(
-                              value: progress,
-                              strokeWidth: 6,
-                              backgroundColor: Colors.white.withValues(
-                                alpha: 0.3,
-                              ),
-                              valueColor: const AlwaysStoppedAnimation<Color>(
-                                Colors.white,
-                              ),
-                            ),
-                          ),
-                          Center(
-                            child: Text(
-                              '${(progress * 100).toInt()}%',
-                              style: Theme.of(context).textTheme.bodySmall
-                                  ?.copyWith(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                            ),
-                          ),
-                        ],
-                      ),
+                    AnimatedProgressIndicator(
+                      progress: progress,
+                      progressColor: Colors.white,
+                      backgroundColor: Colors.white.withValues(alpha: 0.3),
+                      textColor: Colors.white,
                     ),
                   ],
                 ),

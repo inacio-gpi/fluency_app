@@ -1,3 +1,4 @@
+import 'package:fluency_app/core/presentation/widgets/animated_linear_progress_indicator.dart';
 import 'package:fluency_app/core/theme/app_theme.dart';
 import 'package:fluency_app/features/path/domain/entities/lesson.dart';
 import 'package:flutter/material.dart';
@@ -154,10 +155,10 @@ class LessonNode extends StatelessWidget {
           ),
           if (lesson.completedTasksCount > 0) ...[
             const SizedBox(height: 8),
-            LinearProgressIndicator(
-              value: lesson.progress,
+            AnimatedLinearProgressIndicator(
+              progress: lesson.progress,
+              progressColor: nodeColor,
               backgroundColor: AppTheme.lockedColor.withValues(alpha: 0.2),
-              valueColor: AlwaysStoppedAnimation<Color>(nodeColor),
             ),
           ],
         ],

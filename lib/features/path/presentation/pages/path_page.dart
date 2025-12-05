@@ -1,3 +1,4 @@
+import 'package:fluency_app/core/presentation/widgets/animated_progress_indicator.dart';
 import 'package:fluency_app/core/routes/app_routes.dart';
 import 'package:fluency_app/core/theme/app_theme.dart';
 import 'package:fluency_app/features/path/presentation/controller/path_controller.dart';
@@ -187,36 +188,11 @@ class _PathPageState extends State<PathPage> {
                             ],
                           ),
                         ),
-                        SizedBox(
-                          width: 60,
-                          height: 60,
-                          child: Stack(
-                            alignment: Alignment.center,
-                            children: [
-                              SizedBox(
-                                width: 40,
-                                height: 40,
-                                child: CircularProgressIndicator(
-                                  value: path.progress,
-                                  strokeWidth: 6,
-                                  backgroundColor: Colors.white.withValues(
-                                    alpha: 0.3,
-                                  ),
-                                  valueColor:
-                                      const AlwaysStoppedAnimation<Color>(
-                                        AppTheme.primaryColor,
-                                      ),
-                                ),
-                              ),
-                              Center(
-                                child: Text(
-                                  '${(path.progress * 100).toInt()}%',
-                                  style: Theme.of(context).textTheme.bodySmall
-                                      ?.copyWith(fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                            ],
-                          ),
+                        AnimatedProgressIndicator(
+                          progress: path.progress,
+                          progressColor: AppTheme.primaryColor,
+                          backgroundColor: Colors.white.withValues(alpha: 0.3),
+                          textColor: AppTheme.textPrimaryColor,
                         ),
                       ],
                     ),
